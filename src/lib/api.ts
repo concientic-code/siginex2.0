@@ -1,11 +1,12 @@
 import type { KnowledgeBase } from "@/types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY || "demo-key";
 const TENANT_ID = process.env.NEXT_PUBLIC_TENANT_ID || "default";
 
 async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_BASE}${endpoint}`, {
+  const url = API_BASE ? `${API_BASE}${endpoint}` : `/api${endpoint}`;
+  const res = await fetch(url, {
     ...options,
     headers: {
       "Content-Type": "application/json",
