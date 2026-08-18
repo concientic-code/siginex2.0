@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Topbar from "@/components/Topbar";
+import ResultsView from "@/components/results/ResultsView";
 import type { KnowledgeBase, CompanyProfile, Answers, ViewId } from "@/types";
 import { computeResults } from "@/lib/scoring";
 import { getKnowledgeBase } from "@/lib/api";
@@ -322,20 +323,7 @@ export default function DiagnosticoPage() {
           )}
 
           {view === "resultados" && (
-            <div>
-              <div className="bg-card border border-line rounded-[14px] p-5 shadow-sm text-center">
-                <div className="font-[var(--font-heading)] text-5xl font-bold" style={{ color: results.globalScore > 0 ? undefined : "var(--muted)" }}>
-                  {Math.round(results.globalScore)}
-                </div>
-                <div className="font-mono text-xs text-muted mt-1">/ 100 · Score global SGI</div>
-                <div className="mt-3 text-sm text-muted">
-                  {results.answeredTotal} de {results.applicableTotal} preguntas respondidas
-                </div>
-              </div>
-              <p className="text-sm text-muted mt-4 text-center">
-                Vista de resultados completa en desarrollo — Fase 2.
-              </p>
-            </div>
+            <ResultsView modules={modules} answers={answers} company={company} />
           )}
 
           {view === "benchmark" && (
