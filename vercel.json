@@ -3,7 +3,7 @@
   "functions": {
     "api/**/*.py": {
       "runtime": "@vercel/python@4.3.1",
-      "includeFiles": "api/_data/**,api/_orchestrator.py"
+      "includeFiles": "api/_data/**,api/_orchestrator.py,api/_db.py"
     }
   },
   "rewrites": [
@@ -11,6 +11,8 @@
     { "source": "/api/kb", "destination": "/api/kb/index" },
     { "source": "/api/market-signals", "destination": "/api/market-signals" },
     { "source": "/api/diagnosticos/:id/calcular", "destination": "/api/diagnosticos/[id]/calcular" },
+    { "source": "/api/diagnosticos/:id", "destination": "/api/diagnosticos/[id]/index" },
+    { "source": "/api/diagnosticos", "destination": "/api/diagnosticos/index" },
     { "source": "/api/health", "destination": "/api/health" },
     { "source": "/api", "destination": "/api/index" }
   ],

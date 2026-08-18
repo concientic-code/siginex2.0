@@ -19,6 +19,8 @@ class handler(BaseHTTPRequestHandler):
                 "GET /api/kb",
                 "GET /api/kb/version",
                 "GET /api/market-signals",
-                "POST /api/diagnosticos/{id}/calcular"
+                "POST /api/diagnosticos/{id}/calcular",
+                "GET /api/diagnosticos",
+                "GET /api/diagnosticos/{id}"
             ]
         }).encode())

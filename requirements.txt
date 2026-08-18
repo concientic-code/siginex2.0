@@ -1,2 +1,2 @@
 # Python dependencies for Vercel serverless functions
-# No external dependencies needed - uses stdlib only
+psycopg2-binary==2.9.9
