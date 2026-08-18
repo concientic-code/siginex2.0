@@ -4,7 +4,7 @@ import json
 import os
 import hashlib
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), '..', '_data')
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '_data')
 
 # Load KB at cold start
 _kb_raw = None

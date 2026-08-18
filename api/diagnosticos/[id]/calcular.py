@@ -8,7 +8,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import _orchestrator as orch  # noqa: E402
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), '..', '..', '_data')
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '_data')
 
 API_KEYS = {k.strip() for k in os.environ.get('SIGINEX_API_KEYS', 'demo-key').split(',') if k.strip()}
 

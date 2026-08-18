@@ -35,7 +35,8 @@ export default function DiagnosticoPage() {
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
+        console.error("Failed to load KB:", err);
+        setError(`No se pudo conectar al API: ${err.message}. Verifique que /api/kb esté disponible.`);
         setLoading(false);
       });
   }, []);

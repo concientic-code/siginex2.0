@@ -3,7 +3,7 @@ from http.server import BaseHTTPRequestHandler
 import json
 import os
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), '..', '_data')
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '_data')
 
 
 class handler(BaseHTTPRequestHandler):

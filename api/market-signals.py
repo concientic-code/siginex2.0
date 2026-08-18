@@ -4,7 +4,7 @@ import json
 import os
 from urllib.parse import urlparse, parse_qs
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), '_data')
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '_data')
 
 
 class handler(BaseHTTPRequestHandler):
