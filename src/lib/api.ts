@@ -1,4 +1,4 @@
-import type { KnowledgeBase } from "@/types";
+import type { KnowledgeBase, Question } from "@/types";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY || "demo-key";
@@ -24,7 +24,28 @@ async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> 
 }
 
 export async function getKnowledgeBase(): Promise<KnowledgeBase> {
-  return fetchApi<KnowledgeBase>("/kb");
+  const raw = await fetchApi<Record<string, unknown>>("/kb");
+  
+  // Map the API response to our internal types
+  const modulos = (raw.modulos as Record<string, unknown>[]).map((m: Record<string, unknown>) => ({
+    id: m.id as string,
+    name: (m.nombre || m.name || m.id) as string,
+    short: (m.short || m.nombre || m.id) as string,
+    weight: (m.weight || 0.1) as number,
+    norms: (m.norms || []) as string[],
+    escala: (m.escala || "general") as string,
+    preguntas: (m.preguntas || []) as Question[],
+  }));
+
+  return {
+    meta: {
+      name: (raw.meta as Record<string, unknown>)?.name as string || "SIGINEX",
+      version: (raw.kb_version || (raw.meta as Record<string, unknown>)?.version || "3.0") as string,
+      total_preguntas: (raw.total_preguntas || modulos.reduce((n, m) => n + m.preguntas.length, 0)) as number,
+      descargo: (raw.meta as Record<string, unknown>)?.descargo as string || "Resultado orientativo.",
+    },
+    modulos,
+  };
 }
 
 export async function getKbVersion() {
