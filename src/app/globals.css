@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #14202E;
+  --slate-900: #16233A;
+  --slate-800: #1E3050;
+  --slate-700: #2A4571;
+  --canvas: #EDF1F7;
+  --card: #FFFFFF;
+  --line: #E1E7F0;
+  --line-soft: #EDF1F6;
+  --muted: #64748B;
+  --gold: #C08A2E;
+  --good: #2F8A66;
+  --danger: #C0433A;
+  --warning: #D8862B;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-slate-900: var(--slate-900);
+  --color-slate-800: var(--slate-800);
+  --color-slate-700: var(--slate-700);
+  --color-canvas: var(--canvas);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-muted: var(--muted);
+  --color-gold: var(--gold);
+  --color-good: var(--good);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select {
+  font-family: inherit;
+}
