@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Topbar from "@/components/Topbar";
 import ResultsView from "@/components/results/ResultsView";
+import BenchmarkView from "@/components/BenchmarkView";
 import type { KnowledgeBase, CompanyProfile, Answers, ViewId } from "@/types";
 import { computeResults } from "@/lib/scoring";
 import { getKnowledgeBase } from "@/lib/api";
@@ -327,10 +328,7 @@ export default function DiagnosticoPage() {
           )}
 
           {view === "benchmark" && (
-            <div className="bg-card border border-line rounded-[14px] p-5 shadow-sm">
-              <h3 className="font-[var(--font-heading)] text-[15px] font-semibold m-0 mb-1">Benchmark vs. mercado</h3>
-              <p className="text-xs text-muted">Vista de benchmark en desarrollo — Fase 2.</p>
-            </div>
+            <BenchmarkView />
           )}
         </main>
       </div>

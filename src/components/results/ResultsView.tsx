@@ -7,6 +7,8 @@ import ScoreRing from "./ScoreRing";
 import RadarChart from "./RadarChart";
 import ModuleTable from "./ModuleTable";
 import GapsList from "./GapsList";
+import ImprovementPlan from "./ImprovementPlan";
+import LearningPlan from "./LearningPlan";
 
 interface ResultsViewProps {
   modules: Module[];
@@ -117,6 +119,17 @@ export default function ResultsView({ modules, answers, company }: ResultsViewPr
 
       {/* Gaps */}
       <GapsList modules={modules} answers={answers} company={company} />
+
+      {/* Improvement Plan */}
+      <ImprovementPlan modules={modules} answers={answers} company={company} />
+
+      {/* Learning Plan */}
+      <LearningPlan modules={modules} answers={answers} company={company} />
+
+      {/* Disclaimer */}
+      <div className="text-center text-muted text-[11px] mt-6 leading-[1.6]">
+        Referencias: Res. 0312/2019 · Decreto 1072/2015 · Ley 1562/2012 · Ley 99/1993 · Decreto 1076/2015 · Res. 631/2015 · Ley 1474/2011 · Ley 2195/2022 · Ley 1581/2012 · ISO 9001·14001·45001·31000·22301·27001·37301·37001·42001.
+      </div>
     </div>
   );
 }
